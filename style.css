@@ -198,19 +198,18 @@ ul {
     border: none;
     color: #ff4444;
     font-size: 0.8rem;
-    /* Reduje el tamaño (antes era 1.2rem) */
+   
     cursor: pointer;
     padding: 0 0.3rem;
-    /* Reduje el padding horizontal */
+    
     margin-left: 0.5rem;
-    /* Espacio entre nombre y la × */
+   
     line-height: 1;
     transition: all 0.2s ease;
 }
 
-/* Opcional: Para hacerla más discreta en hover */
 .eliminar:hover {
     color: #cc0000;
     transform: none;
-    /* Eliminamos el efecto de escala si lo tenía */
+  
 }
