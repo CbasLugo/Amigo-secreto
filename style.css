@@ -160,3 +160,57 @@ ul {
 .button-draw:hover {
     background-color: var(--color-button-hover);
 }
+
+/* Contenedor principal de la lista */
+.name-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem auto;
+    width: 90%;
+    max-width: 300px;
+}
+
+/* Cada elemento de la lista */
+.participante {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7rem 1rem;
+    margin: 0.5rem 0;
+    background-color: #f5f5f5;
+    border-radius: 50px;
+    position: relative;
+}
+
+/* Texto del nombre centrado */
+.nombre-amigo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    max-width: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.eliminar {
+    background: none;
+    border: none;
+    color: #ff4444;
+    font-size: 0.8rem;
+    /* Reduje el tamaño (antes era 1.2rem) */
+    cursor: pointer;
+    padding: 0 0.3rem;
+    /* Reduje el padding horizontal */
+    margin-left: 0.5rem;
+    /* Espacio entre nombre y la × */
+    line-height: 1;
+    transition: all 0.2s ease;
+}
+
+/* Opcional: Para hacerla más discreta en hover */
+.eliminar:hover {
+    color: #cc0000;
+    transform: none;
+    /* Eliminamos el efecto de escala si lo tenía */
+}

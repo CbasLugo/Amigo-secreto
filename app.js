@@ -1,47 +1,91 @@
-// Lista para almacenar los nombres ingresados
-let amigos = [];
+// Almacenamiento de participantes
+const participantes = [];
+const campoNombre = document.getElementById("amigo");
 
-/**
- * Agrega un nombre a la lista de amigos.
- * Valida que el campo no esté vacío y actualiza la lista visible.
- */
+// Formatear nombre con mayúscula inicial
+campoNombre.addEventListener("input", () => {
+    if (campoNombre.value.length > 0) {
+        campoNombre.value = campoNombre.value[0].toUpperCase() + campoNombre.value.slice(1).toLowerCase();
+    }
+});
+
+// Función para añadir participante (ahora coincide con el HTML)
 function agregarAmigo() {
-    let nombre = document.getElementById("amigo").value.trim(); // Captura y limpia el valor
-
-    if (nombre === "") {
-        alert("Por favor, ingresa un nombre válido.");
+    const nombre = campoNombre.value.trim();
+    
+    if (!nombre) {
+        mostrarMensaje("Por favor escribe un nombre");
         return;
     }
-
-    amigos.push(nombre); // Agrega el nombre a la lista
-    document.getElementById("amigo").value = ""; // Limpia el campo de texto
-    mostrarLista(); // Actualiza la lista visible
+    
+    if (participantes.includes(nombre)) {
+        mostrarMensaje("Este nombre ya está en la lista");
+        return;
+    }
+    
+    participantes.push(nombre);
+    campoNombre.value = "";
+    actualizarVista();
+    campoNombre.focus();
 }
 
-/**
- * Muestra los nombres en la lista HTML.
- */
-function mostrarLista() {
-    let lista = document.getElementById("listaAmigos");
-    lista.innerHTML = ""; // Limpia el contenido previo
+// Mostrar mensajes temporales
+function mostrarMensaje(texto) {
+    const aviso = document.createElement("div");
+    aviso.className = "aviso";
+    aviso.textContent = texto;
+    document.body.appendChild(aviso);
+    
+    setTimeout(() => {
+        aviso.remove();
+    }, 2000);
+}
 
-    amigos.forEach(function(amigo) {
-        let li = document.createElement("li");
-        li.textContent = amigo;
-        lista.appendChild(li);
+// Actualizar la visualización
+function actualizarVista() {
+    const lista = document.getElementById("listaAmigos");
+    lista.innerHTML = "";
+    
+    participantes.forEach((nombre, indice) => {
+        const elemento = document.createElement("li");
+        elemento.className = "participante";
+        
+        elemento.innerHTML = `
+            <span>${nombre}</span>
+            <button class="eliminar" data-indice="${indice}">×</button>
+        `;
+        
+        lista.appendChild(elemento);
+    });
+    
+    // Asignar eventos de eliminación
+    document.querySelectorAll(".eliminar").forEach(boton => {
+        boton.addEventListener("click", eliminarParticipante);
     });
 }
 
-/**
- * Sortea un amigo al azar de la lista y muestra el resultado.
- */
+// Eliminar participante
+function eliminarParticipante(evento) {
+    const indice = evento.target.getAttribute("data-indice");
+    participantes.splice(indice, 1);
+    actualizarVista();
+}
+
+// Función para sortear (ahora coincide con el HTML)
 function sortearAmigo() {
-    if (amigos.length === 0) {
-        alert("La lista está vacía. Agrega nombres antes de sortear.");
+    if (participantes.length < 2) {
+        mostrarMensaje("Necesitas al menos 2 participantes");
         return;
     }
-
-    let indiceAleatorio = Math.floor(Math.random() * amigos.length);
-    let resultado = document.getElementById("resultado");
-    resultado.innerHTML = `El amigo secreto es: <strong>${amigos[indiceAleatorio]}</strong>`;
+    
+    const ganador = participantes[Math.floor(Math.random() * participantes.length)];
+    document.getElementById("resultado").innerHTML = `
+        <p>¡El amigo secreto es:</p>
+        <p class="ganador">${ganador}</p>
+    `;
 }
+
+// Tecla Enter para agregar
+campoNombre.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") agregarAmigo();
+});
