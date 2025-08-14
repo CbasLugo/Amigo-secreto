@@ -11,9 +11,10 @@
 
 1. **Abrir la aplicación**:  
    - Ejecuta `index.html` en cualquier navegador moderno
-
-2. **Agregar participantes**:  
-   - Escribe cada nombre y presiona Enter o haz clic en "Añadir"
+     
+2. **Agregar participantes**:
+   - Escribe cada nombre en el campo
+   - Presiona <kbd>Enter</kbd> o haz clic en "Añadir"
 
 3. **Realizar sorteo**:  
    - Haz clic en "Sortear amigo" cuando la lista esté completa
