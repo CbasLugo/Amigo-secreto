@@ -1,5 +1,5 @@
 # 🎁 Amigo Secreto Digital
-
+> Proyecto desarrollado para [Oracle ONE](enlace-oficial)
 ## ▶️ Demo Interactiva
 
 **Video tutorial completo (1 minuto):**  
