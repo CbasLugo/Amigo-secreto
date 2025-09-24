@@ -3,7 +3,7 @@
 ## ▶️ Demo Interactiva
 
 **Video tutorial completo (1 minuto):**  
-🔗 [Ver demostración en Streamable](https://streamable.com/7lxzgl) *(Haz clic para ver el funcionamiento real)*
+🔗 [Ver demostración en Streamable](https://streamable.com/4la5oy) *(Haz clic para ver el funcionamiento real)*
 
 ---
 
